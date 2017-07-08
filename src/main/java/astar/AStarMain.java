@@ -5,11 +5,10 @@ import java.io.*;
 import org.apache.commons.io.FileUtils;
 
 import java.util.ArrayList;
-//import java.io.File;
-//import java.io.IOException;
 import java.util.List;
 
-//import astar;
+import astar.TileNode;
+
 /**
  * @author seelann
  * Purpose: 
@@ -48,7 +47,18 @@ public class AStarMain {
             pathFound = graph.GetPathFinder().StartPathFind(graph.GetStartingTile(), graph.GetDestinationTile());
             //
             System.out.printf("\n xMax= %d, yMax= %d \n", xMax, yMax );
-            
+
+            //
+            //Collections.sort(pathFound, this.fComparator);
+            //Loop all tiles in graph and setup initialize property fields 
+            for (TileNode aTileNode : pathFound) 
+            {
+                //MapPoint aPoint = entry.getKey();
+                //TileNode aTileNode = entry.getValue();
+               System.out.printf("%d,%d,%c ", aTileNode.getMapPoint().x, aTileNode.getMapPoint().y, aTileNode.getTileToken().tokenChar );
+
+            }
+          
         } catch (IOException e) {
             e.printStackTrace();
         }

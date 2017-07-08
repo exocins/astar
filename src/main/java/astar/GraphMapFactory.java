@@ -100,21 +100,22 @@ public class GraphMapFactory {
     //
     public void initGraphProperties(AStar graph)
     {
-        //for (TileNode aTileNode : gridMap) {
-        for (Map.Entry<MapPoint, TileNode> entry : graph.GetGraphMap().entrySet()) {
+        //Loop all tiles in graph and setup initialize property fields 
+        for (Map.Entry<MapPoint, TileNode> entry : graph.GetGraphMap().entrySet()) 
+        {
             //MapPoint aPoint = entry.getKey();
             TileNode aTileNode = entry.getValue();
            //System.out.printf("%d,%d,%c ", aTileNode.getMapPoint().x, aTileNode.getMapPoint().y, aTileNode.getTileToken().tokenChar );
             
-            //
+            //Setup default properties for aTileNode
             initTileProperties(aTileNode);
         }
     }
     //
     public void initTileProperties(TileNode aTileNode)
     {
+        // Setup H values for a TileNode
         aTileNode.calculateHCost(aTileNode);
-        
     }
 
 }

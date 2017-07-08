@@ -87,7 +87,7 @@ public class TileNode implements ITileNode {
     {
         this.gCost = g;
     }
-    //Get g tentitive value
+    //Get g tentative value
     public double getGCost()
     {
         return this.gCost;
@@ -110,4 +110,9 @@ public class TileNode implements ITileNode {
         return this.parentNode;
     }
         
+    @Override
+    public String toString() {
+        return this.getMapPoint().toString();
+    }
+
 }

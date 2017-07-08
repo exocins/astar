@@ -13,13 +13,22 @@ public class MapPoint
     
     MapPoint() {}
     
-    @Override public boolean equals(Object o) 
+    @Override 
+    public boolean equals(Object o) 
     {
       return o instanceof MapPoint && ((MapPoint) o).x == x && ((MapPoint) o).y == y;
     }
     
-    @Override public int hashCode() 
+    @Override 
+    public int hashCode() 
     {
         return x * 37 + y;
     }
+
+    @Override
+    public String toString() 
+    {
+        return "("+ this.x+","+this.y+")";
+    }
+
 }

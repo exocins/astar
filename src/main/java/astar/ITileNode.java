@@ -1,28 +1,29 @@
 package astar;
 
-import java.util.*;
-
 /**
  * author seelann
  * Purpose: Define interface ITileNode for a tile node on grid for a* algotithm
  * 
  */
 public interface ITileNode {
+    //Get mapoint for node
+    public MapPoint getMapPoint();
     // Set Heuristic value (h) - distance cost to destination node
-    public void setHCost(int h);
+    public void setHCost(double h);
     //Get Heuristic value (h)
-    public int getHCost();
+    public double getHCost();
     // Set g value - cost of movement from start node
-    public void setGCost(int g);
+    public void setGCost(double g);
     //Get g tentitive value
-    public int getGCost();
+    public double getGCost();
+    //move cost to toNode
+    public double calculateGMoveCost(ITileNode toNode);
     //Get f value
-    public int getFCost();
-    //Get Parent reference
+    public double getFCost();
+    //set parent
+    public void setParent(TileNode parent);
+    //Get Parent
     public TileNode getParentNode();
-
-    
-    //Get list of neighbour nodes 
-    public ArrayList<TileNode> getNeighbours(); 
-
+    //get properties of node
+    public TileToken getTileToken();
 }

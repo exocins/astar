@@ -3,7 +3,7 @@ package astar;
 //import java.util.ArrayList;
 //import java.util.HashMap;
 //import java.util.Map;
-import java.util.*;
+//import java.util.*;
 
 import astar.ITileNode;
 import astar.MapPoint;
@@ -15,88 +15,93 @@ import astar.TileToken;
  */
 public class TileNode implements ITileNode {
     // Constants
-    private final int H_V_MOVEMENT_COST = 10;
-    private final int DIAG_MOVEMENT_COST = 14;
+    //private final int H_V_MOVEMENT_COST = 10;
+    //private final int DIAG_MOVEMENT_COST = 14;
     
-    // x,y graph position
+    // (x,y) graph position of TileNode
     public MapPoint point;
     
-    // Tile token representing terring oject
+    // Tile token representing terrain object default walkable properties
     public TileToken token;
     
-    //Variables internal
-    private int hCost;
+    //Variables internal- used for movement algotithms
+    private double hCost;           // Move cost from node to destination node
+    private double gCost;           // Move cost from start node to this node
     //
-    private int gCost;
-    //
-    private TileNode parentNode;
+    private TileNode parentNode;    // Node from which a move was made
     
     //Constrctor
     public TileNode(MapPoint aPoint)
     {
         this.point = aPoint;
-        //
+        // Initialize internal fields
         this.gCost = 0;
         this.hCost = 0;
         this.parentNode = null;
-        this.token = null;
+        this.token = new TileToken();   //Create instance object
     }
     
     //
-    public void addToken(char aChar)
+    public void setTokenDefaultProperties(char aChar, boolean walkable, int moveCost)
     {
-        this.token = new TileToken( aChar);
-    }
-    
-    //
-    public void setTokenProperties(boolean start, boolean end, boolean warkable, int cost)
-    {
-        token.setTokenProperties(start, end, warkable, cost);
+        token.setDefaultProperties( aChar, walkable, moveCost);
     }
     
     //
     public void calculateHCost(TileNode destNode)
-    {   // Multipy by 10 to be consistant to the g value also being multiplied by 10 (1.4 -> 14)
-    //    this.hCost = (Math.abs(this.point.x - destNode.point.x) 
-    //                         + Math.abs(this.point.y - destNode.point.y)) * 10;
+    {   // Use Manhattan formula
+        this.hCost = (Math.abs(this.point.x - destNode.point.x) 
+                             + Math.abs(this.point.y - destNode.point.y)) ;
     }
  
     //
-    public void calculateGCost(TileNode toNode)
-    {
-        if((this.point.x == toNode.point.x) || (this.point.y == toNode.point.y) )
-        {
-            this.gCost += this.H_V_MOVEMENT_COST;
-        } else
-        {
-            this.gCost += this.DIAG_MOVEMENT_COST;
-        }             
+    public double calculateGMoveCost(ITileNode toNode)
+    {   // add tentative cost of node and default toNode cost 
+         return this.gCost +  toNode.getTileToken().moveCost;             
     }
     
+    //Get MapPoint of TileNode
+    public MapPoint getMapPoint()
+    {
+        return this.point;
+    }
+
+    //Get TileToken of TileNode
+    public TileToken getTileToken()
+    {
+        return this.token;
+    }
+
     // Set Heuristic value (h) - distance cost to destination node // todo - maybe redundant
-    public void setHCost(int h)
+    public void setHCost(double h)
     {
         this.hCost = h;
     }
     //Get Heuristic value (h)
-    public int getHCost()
+    public double getHCost()
     {
         return this.hCost;
     }
     // Set g value - cost of movement from start node
-    public void setGCost(int g)
+    public void setGCost(double g)
     {
         this.gCost = g;
     }
     //Get g tentitive value
-    public int getGCost()
+    public double getGCost()
     {
         return this.gCost;
     }
     //Get f value
-    public int getFCost()
+    public double getFCost()
     {
         return this.gCost + this.hCost;
+    }
+
+    //set parent
+    public void setParent(TileNode parent)
+    {
+        this.parentNode = parent;
     }
 
     //Get Parent node for this node
@@ -105,28 +110,4 @@ public class TileNode implements ITileNode {
         return this.parentNode;
     }
         
-    //Get list of neighbour nodes // todo- recheck 
-    public ArrayList<TileNode> getNeighbours()
-    {
-        ArrayList<TileNode> neighbours = new ArrayList<TileNode>();
-        // Prefetch 
-        TileNode tileNode = this.getNextNeighbour();
-        while(tileNode != null) 
-        {
-            neighbours.add(0, tileNode);
-            // Try fetch next neighbour
-            tileNode = this.getNextNeighbour();             
-        }
-        return neighbours; 
-    }
-    
-    public TileNode getNextNeighbour()
-    {
-    
-    //private final TileNode tileNode = null;
-        
-        // todo
-        
-        return null; //tileNode;
-    }
 }

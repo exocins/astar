@@ -1,24 +1,24 @@
 package astar;
 
+/**
+ * @author seelann
+ * Purpose: 
+ */
 public class TileToken {
 
-    public boolean isStartToken = false;
-    public boolean isDestinationTokem = false;
-    // graph node moveability into
+    // graph node movability properties
     public boolean walkable = false;
     public char tokenChar;
-    public int tileCost= 0; 
+    public int moveCost= 0; 
     
-    TileToken(char aChar)
+    TileToken()
     {
-        this.tokenChar = aChar;
     }
     
-    public void setTokenProperties(boolean start, boolean end, boolean walkable, int cost)
+    public void setDefaultProperties(char aChar, boolean walkable, int moveCost)
     {
-        this.isStartToken = start;
-        this.isDestinationTokem = end;
+        this.tokenChar = aChar;
         this.walkable = walkable;
-        this.tileCost = cost;
+        this.moveCost = moveCost;
     }
 }

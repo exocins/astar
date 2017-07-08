@@ -3,32 +3,100 @@ package astar;
 import java.util.HashMap;
 import java.util.Map;
 
+import astar.GraphMapFactory;
+import astar.PathFinder;
 import astar.TileNode;
 import astar.MapPoint;
 
 /**
  * @author seelann
- *
+ * Purpose: Starting A* algorithm class for creating graph, tile map points and determining path.
  */
 
 public class AStar {
-
-    private final int mapWidth;
-    private final int mapHeight;
-    // Create HashMap
-    private final Map<MapPoint, TileNode> gridMap;
     
+    // HashMap for graph
+    private Map<MapPoint, TileNode> gridMap;
+ 
+    //Indicates graph map dimensions, after graph is built
+    private int mapWidth;
+    private int mapHeight;
+   
+    //Indicates start and end points for path find after graph is built
     private TileNode startTileNode;
     private TileNode destTileNode;
+    // 
+    private GraphMapFactory graphMapBuild;
     
-    public AStar(int width, int height)
+    private PathFinder pathFind;
+    
+    public AStar()
+    {
+        this.mapWidth = 0;
+        this.mapHeight = 0;
+        this.startTileNode = null;
+        this.destTileNode = null;
+        
+        // Create instance for class ojects
+        this.gridMap = new HashMap<MapPoint, TileNode>();
+        //
+        this.graphMapBuild = new GraphMapFactory();
+        //
+        this.pathFind = new PathFinder(this);
+    }
+    
+    //Setter methods for class
+    public void SetGraphMapWidth(int width)
     {
         this.mapWidth = width;
-        this.mapHeight = height;
-        // Create instnace for gridMap
-        this.gridMap = new HashMap<MapPoint, TileNode>();
-    }   
-
+    }
+    public void SetGraphMapHeight(int gHeight)
+    {
+        this.mapHeight = gHeight;
+    }
+    
+    public void SetStartingTile(TileNode aTileNode)
+    {
+        this.startTileNode = aTileNode;
+    }
+    public void SetDestinationTile(TileNode aTileNode)
+    {
+        this.destTileNode = aTileNode;
+    }
+    
+    //Get methods for class
+    public int GetGraphMapWidth()
+    {
+        return this.mapWidth;
+    }
+    public int GetGraphMapHeight()
+    {
+        return this.mapHeight;
+    }
+    public TileNode GetStartingTile()
+    {
+        return this.startTileNode;
+    }
+    public TileNode GetDestinationTile()
+    {
+        return this.destTileNode;
+    }
+    //
+    public Map<MapPoint, TileNode> GetGraphMap()
+    {
+        return this.gridMap;
+    }
+    //
+    public PathFinder GetPathFinder()
+    {
+        return this.pathFind;
+    }
+    public GraphMapFactory GetGraphMapBuilder()
+    {
+        return this.graphMapBuild;
+    }
+   
+    //
     public void AddTileToGridMap(MapPoint aPoint )
     {
         MapPoint bPoint = new MapPoint(aPoint.x, aPoint.y);
@@ -43,87 +111,6 @@ public class AStar {
         
         return gTileNode;
     }
+
     
-    public void AddTokenToTile(MapPoint aPoint, char aToken)
-    {
-        AddTileToGridMap(aPoint);
-        TileNode aTileNode = GetTileFromGridMap(aPoint);
-        
-        //Add terrain data to tile
-        aTileNode.addToken(aToken);
-        
-        boolean start = false;
-        boolean end; 
-        boolean walkable; 
-        int cost;
-        
-        switch(aToken){  
-            case '~': //water
-                start = false;
-                end = false;
-                walkable = false;
-                cost = 0;
-            break;  
-            case '.': //flatland
-                start = false;
-                end = false;
-                walkable = true;
-                cost = 1;
-            break;  
-            case '*': // Forest
-                start = false;
-                end = false;
-                walkable = true;
-                cost = 2;
-                start = false;
-            break;  
-            case '^': // Mountain
-                end = false;
-                walkable = true;
-                cost = 3;
-            break;  
-            case '@': //start
-                start = true;
-                end = false;
-                walkable = true;
-                cost = 0;
-                //
-                startTileNode = aTileNode;
-            break;  
-            case 'X': // Destination
-                start = false;
-                end = true;
-                walkable = true;
-                cost = 0;
-                //
-                destTileNode = aTileNode;
-            break;  
-            default:
-                start = false;
-                end = false;
-                walkable = false;
-                cost = 0;
-            break;  
-        }
-        //
-        aTileNode.setTokenProperties( start, end, walkable, cost);
-    }
-    
-    //
-    public void initGraphTileProperties()
-    {
-        //for (TileNode aTileNode : gridMap) {
-        for (Map.Entry<MapPoint, TileNode> entry : gridMap.entrySet()) {
-            //MapPoint aPoint = entry.getKey();
-            TileNode aTileNode = entry.getValue();
-            //
-            initTileProperties(aTileNode);
-        }
-    }
-    //
-    public void initTileProperties(TileNode aTileNode)
-    {
-        aTileNode.calculateHCost(destTileNode);
-        
-    }
 }

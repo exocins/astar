@@ -20,7 +20,7 @@ public class GraphMapFactory {
         initGraphProperties(graph);
     }
     
-    //
+    //Build graph tieNodes from input custom data
     public void AddTilesToGraph(AStar graph, List<String> lines)
     {
         int x=0;
@@ -29,27 +29,22 @@ public class GraphMapFactory {
         // loop each line in file
         for (String line : lines) {
             x=0;    
-            //System.out.printf("\n");
-            //System.out.println(line);
             
             //Add byte to tiles in graph
-            for(char myByte : line.toCharArray()) {
-                //System.out.printf("%d,%d,%c ", x,y,myByte );
-                
+            for(char myByte : line.toCharArray()) 
+            {              
                 //create a MapPoint and add Tile to MapPoint to graph
                 MapPoint aPoint = new MapPoint(x,y);
-                AddTokenToTile(graph, aPoint, myByte);
-                
+                AddTokenToTile(graph, aPoint, myByte);    
                 //next char in line
                 x++;
             }
             //Next line
             y++;
         }
-        //System.out.printf("\n\n");
-
     }
 
+    //Setup custom terrain data to default TileNodes field
     public void AddTokenToTile(AStar graph, MapPoint aPoint, char aToken)
     {
         graph.AddTileToGridMap(aPoint);
@@ -97,7 +92,7 @@ public class GraphMapFactory {
         aTileNode.setTokenDefaultProperties( aToken, walkable, cost);
     }
 
-    //
+    //Setup graph map properties that will not change during alsorithm
     public void initGraphProperties(AStar graph)
     {
         //Loop all tiles in graph and setup initialize property fields 
@@ -111,7 +106,8 @@ public class GraphMapFactory {
             initTileProperties(aTileNode);
         }
     }
-    //
+    
+    // Setup TileNode properties that will not change during alsorithm
     public void initTileProperties(TileNode aTileNode)
     {
         // Setup H values for a TileNode

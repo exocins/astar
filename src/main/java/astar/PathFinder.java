@@ -12,15 +12,16 @@ import astar.ClosedSet;
  * Purpose: 
  */
 public class PathFinder {
-    //fields fir graph 
+    public boolean debugToConsole = false;
+    //fields for graph 
     private int width;
     private int height;
     AStar graph;
-    //
+    // List of neighbours of current TileNode
     public ArrayList<TileNode> currentNodeNeighbours;
-    //
+    // Lst of TileNodes still being processed
     public OpenSet openList;
-    //
+    //List to track already processed TIleNode
     public ClosedSet closedList;
     //constructor
     PathFinder(AStar graph) 
@@ -62,11 +63,13 @@ public class PathFinder {
         // Loop all nodes in openList
         while(openList.getSize() > 0 ) 
         {
-            //debug output 
-            System.out.println("Open set: " + openList.toString() + "\n"  
+            if(debugToConsole)
+            {
+                //debug output 
+                System.out.println("Open set: " + openList.toString() + "\n"  
                         + ( "Current node: "+ currentNode.toString()+"\n")
                         + ( "Closed set: " + closedList.toString() ) +"\n");
-
+            }
             //get element with the least sum of costs from the initial node 
             //and heuristic costs to the goal 
             currentNode = openList.poll();
@@ -89,8 +92,7 @@ public class PathFinder {
                     continue;
                 }
                 /* Special rule for nodes that are generated within other nodes:
-                 * We need to ensure that we use the node and
-                 * its g value from the openSet if its already discovered
+                 * Ensure that the node and its g value are from the openSet if its already discovered
                  */
                 ITileNode discNeighbourNode = openList.getNode(neighbourNode);
                 if(discNeighbourNode != null) 
@@ -109,12 +111,14 @@ public class PathFinder {
                 {
                     continue;
                 }
-                
-                //Set Parent
+                             
+                //Set Parent of neighbour to be currentNode 
                 neighbourNode.setParent( (TileNode) currentNode);
+
+                //Add neighbour, with updated GCost, to OpenList
                 if(inOpenSet) 
                 {
-                    // if successorNode is already in data structure it has to be inserted again to 
+                    // if neighbourNode is already in data structure it has to be inserted again to 
                     // regain the order
                     openList.remove(neighbourNode);
                     neighbourNode.setGCost(tentativeG);
@@ -127,8 +131,7 @@ public class PathFinder {
             }
             closedList.add(currentNode);
         }
-        
-        //bestNodeAfterSearch = closedList.min();
+        // no path determined
         return null;
     }
 
@@ -137,7 +140,7 @@ public class PathFinder {
     public ArrayList<TileNode> getTileNeighbours(ITileNode currentTileNode)   
     {
         this.currentNodeNeighbours.clear();
-
+        //Check 8 neighbour nodes of center currentTileNode
         for (int x=-1;x<2;x++) 
         {
             for (int y=-1;y<2;y++) 
@@ -150,7 +153,7 @@ public class PathFinder {
                 int xp = x + currentTileNode.getMapPoint().x;
                 int yp = y + currentTileNode.getMapPoint().y;
 
-                
+                //Check that MapPoint of neighbour is a valid TileNode
                 if (isInsideGraphBounds(xp, yp)) 
                 {
                     MapPoint aPoint = new MapPoint(xp, yp);
@@ -166,28 +169,31 @@ public class PathFinder {
             }
         }
         //
-        return this.currentNodeNeighbours; 
-
-    }
+        return this.currentNodeNeighbours;
+    } 
     
     
-    //
+    //Determine post algorithm parsing of TileNodes to get path , via reverse lookup on node's parent
     private ArrayList<TileNode> calculatePath(TileNode destinationNode) 
     {
         ArrayList<TileNode> path = new ArrayList<TileNode>();
         TileNode node = destinationNode;
-
-        while (node.getParentNode() != null) {
-            path.add(node);
+        //First add destinationNode to list
+        path.add(node);
+        //Loop nodes on condition that the node's parent is still a valid node
+        while (node.getParentNode() != null) 
+        {   // Now insert mode's parent to top of list, 
+            path.add(0, node.getParentNode());
             node = node.getParentNode();
         }
-
+        // Start node is now at top of list and destination node at end of list
         return path;
     }
 
 
-    //
-    private boolean isInsideGraphBounds(int x, int y) {
+    // Check that MapPoint(x,y) is a valid TileNode position within graph grid
+    private boolean isInsideGraphBounds(int x, int y) 
+    {
         return x >= 0 &&
                x < this.width && 
                y >= 0 && 

@@ -32,8 +32,6 @@ public class AStarMain {
             //
             File f = new File("src/small_map.txt");
 
-            System.out.println("Reading files using Apache IO:");
-
             List<String> lines = FileUtils.readLines(f, "UTF-8");
             xMax = lines.get(0).length();
             yMax = lines.size();
@@ -46,16 +44,14 @@ public class AStarMain {
             graph.GetPathFinder().SetMapSize(xMax, yMax);
             pathFound = graph.GetPathFinder().StartPathFind(graph.GetStartingTile(), graph.GetDestinationTile());
             //
-            System.out.printf("\n xMax= %d, yMax= %d \n", xMax, yMax );
+            System.out.printf("\nGraph: xMax= %d, yMax= %d \n", xMax, yMax );
 
-            //
+            //Print calculate path to console:
             //Collections.sort(pathFound, this.fComparator);
             //Loop all tiles in graph and setup initialize property fields 
             for (TileNode aTileNode : pathFound) 
             {
-                //MapPoint aPoint = entry.getKey();
-                //TileNode aTileNode = entry.getValue();
-               System.out.printf("%d,%d,%c ", aTileNode.getMapPoint().x, aTileNode.getMapPoint().y, aTileNode.getTileToken().tokenChar );
+               System.out.printf("["+aTileNode.toString() +",%c] ", aTileNode.getTileToken().tokenChar );
 
             }
           

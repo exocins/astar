@@ -32,9 +32,9 @@ public class AStarMain {
             //create graph
             graph = factory.createGraphMap();            
             //
-            File f = new File("src/small_map.txt");
-
-            List<String> lines = FileUtils.readLines(f, "UTF-8");
+            File fIn = new File("src/small_map.txt");
+            //
+            List<String> lines = FileUtils.readLines(fIn, "UTF-8");
             xMax = lines.get(0).length();
             yMax = lines.size();
             graph.SetGraphMapWidth(xMax);
@@ -56,6 +56,8 @@ public class AStarMain {
                System.out.printf("["+aTileNode.toString() +",%c] ", aTileNode.getTileToken().tokenChar );
 
             }
+            //
+            File fOut = new File("src/outShortPath.txt");
           
         } catch (IOException e) {
             e.printStackTrace();

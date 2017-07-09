@@ -8,7 +8,7 @@ import astar.ClosedSet;
 
 /**
  * Purpose: Implements A* algorithm.
- * Input: Requires created graph "AStar" with tilesNodes setup and initialized 
+ * Prerequsite: Requires created graph "AStar" with tilesNodes setup and initialized 
  */
 public class PathFinder {
     public boolean debugToConsole = false;
@@ -82,7 +82,7 @@ public class PathFinder {
             //get neighbour nodes
             this.currentNodeNeighbours = getTileNeighbours(currentNode);
             
-            // et neighbour node with smallest move  FCost
+            // Get neighbour node with smallest move  FCost
             for(ITileNode neighbourNode : this.currentNodeNeighbours ) 
             {
                 boolean inOpenSet=false;
@@ -155,14 +155,17 @@ public class PathFinder {
                 if (isPointInsideGraphBounds(xp, yp)) 
                 {
                     MapPoint aPoint = new MapPoint(xp, yp);
-                    
-                    TileNode aTileNode = this.graph.GetTileFromGridMap(aPoint);
-                    if(aTileNode.getTileToken().walkable )
-                    {
-                        this.currentNodeNeighbours.add(0, aTileNode);
-                    }    
-                    // delete object from memory 
-                    aPoint = null;
+                    try {                    
+                        TileNode aTileNode = this.graph.GetTileFromGridMap(aPoint);
+                        if(aTileNode.getTileToken().walkable )
+                        {
+                            this.currentNodeNeighbours.add(0, aTileNode);
+                        }
+                    }
+                    finally {
+                        // delete object from memory 
+                        aPoint = null;
+                    }
                 }
             }
         }

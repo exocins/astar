@@ -6,8 +6,8 @@ import java.util.PriorityQueue;
 import astar.ITileNode;
 
 /**
- * @author seelann
  * Purpose:  Keeps set of to be processed TileNodes
+ * 
  */
 public class OpenSet implements IOpenSet {
     // internal Set

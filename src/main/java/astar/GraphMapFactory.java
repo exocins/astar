@@ -8,8 +8,8 @@ enum LoadDataType {
     FILE_LINES, FILE_JSON
 }
 /**
- * Purpose: 
- * 
+ * Purpose: Abstract factory class
+ * To revisit design
  */
     abstract class GraphMapFactory {
 

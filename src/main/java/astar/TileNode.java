@@ -10,8 +10,8 @@ import astar.MapPoint;
 import astar.TileToken;
 
 /**
- * @author seelann
- * Purpose: 
+ * Purpose: Class to represent path data on a grid
+ *  
  */
 public class TileNode implements ITileNode {
     // Constants

@@ -1,8 +1,8 @@
 package astar;
 
 /**
- * @author seelann
- * Purpose: 
+ * Purpose: Class to keep properties on a path point.
+ * 
  */
 public class TileToken {
 
@@ -10,7 +10,7 @@ public class TileToken {
     public boolean walkable = false;
     public char tokenChar;
     public int moveCost= 0; 
-    
+    //Constructor
     TileToken()
     {
     }

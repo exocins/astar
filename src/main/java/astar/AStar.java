@@ -1,5 +1,6 @@
 package astar;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,14 +9,14 @@ import astar.TileNode;
 import astar.MapPoint;
 
 /**
- * @author seelann
  * Purpose: Starting A* algorithm class for creating graph, tile map points and determining path.
+ * 
  */
 
 public class AStar {
     
     // HashMap for graph
-    private Map<MapPoint, TileNode> gridMap;
+    private HashMap<MapPoint, TileNode> gridMap;
  
     //Indicates graph map dimensions, after graph is built
     private int mapWidth;
@@ -35,7 +36,7 @@ public class AStar {
         this.startTileNode = null;
         this.destTileNode = null;
         
-        // Create instance for class ojects
+        // Create instance for class objects
         this.gridMap = new HashMap<MapPoint, TileNode>();
         //
         this.pathFind = new PathFinder(this);
@@ -77,18 +78,18 @@ public class AStar {
     {
         return this.destTileNode;
     }
-    //
+    //Get graph object
     public Map<MapPoint, TileNode> GetGraphMap()
     {
         return this.gridMap;
     }
-    //
+    //Get object to calculate shortest path using A*
     public PathFinder GetPathFinder()
     {
         return this.pathFind;
     }
    
-    //
+    //Ass a Tile node to graph
     public void AddTileToGridMap(MapPoint aPoint )
     {
         MapPoint bPoint = new MapPoint(aPoint.x, aPoint.y);
@@ -96,12 +97,12 @@ public class AStar {
 
         this.gridMap.put(bPoint, bTileNode);
     }
-    
+    //Get a specific Tile from graph
     public TileNode GetTileFromGridMap(MapPoint aPoint)
     {
-        TileNode gTileNode = this.gridMap.get(aPoint);
+        TileNode aTileNode = this.gridMap.get(aPoint);
         
-        return gTileNode;
+        return aTileNode;
     }
 
     

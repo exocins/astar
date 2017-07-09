@@ -7,8 +7,8 @@ import java.util.Comparator;
 import astar.ITileNode;
 
 /**
- * @author seelann
  * Purpose: Keeps set of already processed TileNodes
+ * 
  */
 public class ClosedSet
 {
@@ -20,7 +20,8 @@ public class ClosedSet
         this.list = new ArrayList<ITileNode>();
         this.comp = comp;
     }
-
+    
+    //Helper methods 
     public boolean contains(ITileNode node) 
     {
         return this.list.contains(node);

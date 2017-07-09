@@ -1,7 +1,10 @@
 package astar;
 
-
 import astar.ITileNode;
+/**
+ * Purpose:  Interface of OpenSet. Keeps set of to be processed TileNodes
+ * 
+ */
 
 public interface IOpenSet {
     

@@ -4,14 +4,18 @@ import java.util.List;
 import java.util.Map;
 
 import astar.AStar;
+/**
+ * Purpose: Used by factory to build map from list of lines
+ * 
+ */
 
 public class BuildGraphFromTextLines extends GraphMapFactory {
-
+    // used to create array objects for graph
     @Override
     public AStar createGraphMap() {
         return new AStar();
     }
-
+    // Adds TileNodes and initialses properties 
     @Override
     public void BuildGraphMap(AStar graph, List<String> lines)
     {

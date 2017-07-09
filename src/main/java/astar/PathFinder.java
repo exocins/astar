@@ -2,14 +2,13 @@ package astar;
 
 import java.util.Comparator;
 import java.util.ArrayList;
-//import java.util.*;
 
 import astar.OpenSet;
 import astar.ClosedSet;
 
 /**
- * @author seelann
- * Purpose: 
+ * Purpose: Implements A* algorithm.
+ * Input: Requires created graph "AStar" with tilesNodes setup and initialized 
  */
 public class PathFinder {
     public boolean debugToConsole = false;
@@ -135,7 +134,6 @@ public class PathFinder {
         return null;
     }
 
-    
     //Get list of neighbour nodes 
     public ArrayList<TileNode> getTileNeighbours(ITileNode currentTileNode)   
     {
@@ -154,7 +152,7 @@ public class PathFinder {
                 int yp = y + currentTileNode.getMapPoint().y;
 
                 //Check that MapPoint of neighbour is a valid TileNode
-                if (isInsideGraphBounds(xp, yp)) 
+                if (isPointInsideGraphBounds(xp, yp)) 
                 {
                     MapPoint aPoint = new MapPoint(xp, yp);
                     
@@ -171,9 +169,8 @@ public class PathFinder {
         //
         return this.currentNodeNeighbours;
     } 
-    
-    
-    //Determine post algorithm parsing of TileNodes to get path , via reverse lookup on node's parent
+       
+    //Determine post algorithm parsing of graph TileNodes to get list of path , via reverse lookup on node's parent
     private ArrayList<TileNode> calculatePath(TileNode destinationNode) 
     {
         ArrayList<TileNode> path = new ArrayList<TileNode>();
@@ -190,9 +187,8 @@ public class PathFinder {
         return path;
     }
 
-
     // Check that MapPoint(x,y) is a valid TileNode position within graph grid
-    private boolean isInsideGraphBounds(int x, int y) 
+    private boolean isPointInsideGraphBounds(int x, int y) 
     {
         return x >= 0 &&
                x < this.width && 

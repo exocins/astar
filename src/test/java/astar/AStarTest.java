@@ -9,8 +9,8 @@ import org.junit.Test;
 //import astar.TileNode;
 
 /**
- * @author seelann
  * Purpose: UnitTest for AStar
+ * 
  */
 public class AStarTest {
 /*    TileNode aTileNode;

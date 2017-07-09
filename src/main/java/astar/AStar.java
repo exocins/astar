@@ -3,7 +3,6 @@ package astar;
 import java.util.HashMap;
 import java.util.Map;
 
-import astar.GraphMapFactory;
 import astar.PathFinder;
 import astar.TileNode;
 import astar.MapPoint;
@@ -25,9 +24,8 @@ public class AStar {
     //Indicates start and end points for path find after graph is built
     private TileNode startTileNode;
     private TileNode destTileNode;
-    // 
-    private GraphMapFactory graphMapBuild;
     
+    //
     private PathFinder pathFind;
     
     public AStar()
@@ -39,8 +37,6 @@ public class AStar {
         
         // Create instance for class ojects
         this.gridMap = new HashMap<MapPoint, TileNode>();
-        //
-        this.graphMapBuild = new GraphMapFactory();
         //
         this.pathFind = new PathFinder(this);
     }
@@ -90,10 +86,6 @@ public class AStar {
     public PathFinder GetPathFinder()
     {
         return this.pathFind;
-    }
-    public GraphMapFactory GetGraphMapBuilder()
-    {
-        return this.graphMapBuild;
     }
    
     //

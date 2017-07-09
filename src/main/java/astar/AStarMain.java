@@ -26,9 +26,11 @@ public class AStarMain {
     public static void main(String[] args) throws IOException {
 
         try {
-            //
+            //Get factory object to graph for require input load data type
+            GraphMapFactory factory = GraphMapFactory.getFactory(LoadDataType.FILE_LINES);
+                        
             //create graph
-            graph = new AStar();            
+            graph = factory.createGraphMap();            
             //
             File f = new File("src/small_map.txt");
 
@@ -38,8 +40,8 @@ public class AStarMain {
             graph.SetGraphMapWidth(xMax);
             graph.SetGraphMapHeight(yMax);
  
-            //Build graphmapand tiles from input data
-            graph.GetGraphMapBuilder().StartGraphMapBuild(graph, lines);            
+            //Build graph map and tiles from input data
+            factory.BuildGraphMap(graph, lines);            
             //
             graph.GetPathFinder().SetMapSize(xMax, yMax);
             pathFound = graph.GetPathFinder().StartPathFind(graph.GetStartingTile(), graph.GetDestinationTile());

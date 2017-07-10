@@ -40,6 +40,7 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
             {              
                 //create a MapPoint and add Tile to MapPoint to graph
                 MapPoint aPoint = new MapPoint(x,y);
+                graph.AddTileToGridMap(aPoint);
                 AddTokenToTile(graph, aPoint, myByte);    
                 //next char in line
                 x++;
@@ -53,7 +54,6 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
     @Override
     public void AddTokenToTile(AStar graph, MapPoint aPoint, char aToken)
     {
-        graph.AddTileToGridMap(aPoint);
         TileNode aTileNode = graph.GetTileFromGridMap(aPoint);
        
         boolean walkable=false; 

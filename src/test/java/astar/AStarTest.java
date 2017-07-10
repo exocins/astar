@@ -1,10 +1,10 @@
 package astar;
 
-/*
-import org.junit.Assert;
+import static org.junit.Assert.fail;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-*/
 
 //import astar.TileNode;
 
@@ -13,17 +13,21 @@ import org.junit.Test;
  * 
  */
 public class AStarTest {
-/*    TileNode aTileNode;
+    TileNode aTileNode;
     @Before
     public void setUp() throws Exception {
-        aTileNode = new TileNode(2, 5);
     }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+
     @Test
-    public void testTileNodeSize() {
-        Assert.assertEquals(2, aTileNode.point.x);
-        Assert.assertEquals(5, aTileNode.point.y);
+    public void test() {
+        fail("Not yet implemented");
     }
-*/    
+
+
 }
 
 

@@ -9,7 +9,7 @@ enum LoadDataType {
 }
 /**
  * Purpose: Abstract factory class
- * To revisit design
+ * 
  */
     abstract class GraphMapFactory {
 

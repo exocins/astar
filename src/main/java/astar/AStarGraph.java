@@ -8,7 +8,8 @@ import astar.TileNode;
 import astar.MapPoint;
 
 /**
- * Purpose: Starting A* algorithm class for creating graph, tile map points and determining path.
+ * @author seelann
+ * Purpose: A* algorithm class for graph, tile map points, tile tokens.
  * 
  */
 
@@ -89,12 +90,14 @@ public class AStarGraph {
     }
    
     //Ass a Tile node to graph
-    public void AddTileToGridMap(MapPoint aPoint )
+    public TileNode AddTileToGridMap(MapPoint aPoint )
     {
         MapPoint bPoint = new MapPoint(aPoint.x, aPoint.y);
         TileNode bTileNode = new TileNode( bPoint );
 
         this.gridMap.put(bPoint, bTileNode);
+        //return added TileNode
+        return bTileNode;
     }
     //Get a specific Tile from graph
     public TileNode GetTileFromGridMap(MapPoint aPoint)

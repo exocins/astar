@@ -1,6 +1,6 @@
 package astar;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import astar.AStarGraph;
 
@@ -11,7 +11,7 @@ enum LoadDataType {
  * Purpose: Abstract factory class
  * 
  */
-    abstract class GraphMapFactory {
+abstract class GraphMapFactory {
 
     private static final BuildGraphFromTextLines GraphFromTextLines = new BuildGraphFromTextLines();
     
@@ -33,11 +33,17 @@ enum LoadDataType {
     // Creates graph object
     public abstract AStarGraph createGraphMap();
 
+    //Read input Data
+    public abstract void ReadInputData(String inputFilename, MapPoint maxMapValues);
+
+    //Write output Data
+    public abstract void WritePathFoundToOutput( AStarGraph graph, ArrayList<TileNode> pathFound, String outputFilename);
+
     // Builds graph, adds Tiles and Initialises Tiles
-    public abstract void BuildGraphMap(AStarGraph graph, List<String> lines);
+    public abstract void BuildGraphMap(AStarGraph graph, MapPoint maxMapValues);
     
     //Build graph tieNodes from input custom data
-    public abstract void AddTilesToGraph(AStarGraph graph, List<String> lines);
+    public abstract void AddTilesToGraph(AStarGraph graph);
     
     //Setup custom terrain data to default TileNodes field
     public abstract void AddTokenToTile(AStarGraph graph, MapPoint aPoint, char aToken);

@@ -8,14 +8,14 @@ import astar.ClosedSet;
 
 /**
  * Purpose: Implements A* algorithm.
- * Prerequsite: Requires created graph "AStar" with tilesNodes setup and initialized 
+ * Prerequsite: Requires created graph "AStarGraph" with tilesNodes setup and initialized 
  */
 public class PathFinder {
     public boolean debugToConsole = false;
     //fields for graph 
     private int width;
     private int height;
-    AStar graph;
+    AStarGraph graph;
     // List of neighbours of current TileNode
     public ArrayList<TileNode> currentNodeNeighbours;
     // Lst of TileNodes still being processed
@@ -23,7 +23,7 @@ public class PathFinder {
     //List to track already processed TIleNode
     public ClosedSet closedList;
     //constructor
-    PathFinder(AStar graph) 
+    PathFinder(AStarGraph graph) 
     {
         this.graph = graph;
         this.currentNodeNeighbours = new ArrayList<TileNode>();

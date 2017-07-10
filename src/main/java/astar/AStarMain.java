@@ -22,7 +22,7 @@ public class AStarMain {
     public static int xMax = 0;
     public static int yMax = 0;
     
-    public static AStar graph;
+    public static AStarGraph graph;
     //
     public static ArrayList<TileNode> pathFound;
     //

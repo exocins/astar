@@ -3,7 +3,7 @@ package astar;
 import java.util.List;
 import java.util.Map;
 
-import astar.AStar;
+import astar.AStarGraph;
 /**
  * Purpose: Used by factory to build map from list of lines
  * 
@@ -12,12 +12,12 @@ import astar.AStar;
 public class BuildGraphFromTextLines extends GraphMapFactory {
     // used to create array objects for graph
     @Override
-    public AStar createGraphMap() {
-        return new AStar();
+    public AStarGraph createGraphMap() {
+        return new AStarGraph();
     }
     // Adds TileNodes and initialses properties 
     @Override
-    public void BuildGraphMap(AStar graph, List<String> lines)
+    public void BuildGraphMap(AStarGraph graph, List<String> lines)
     {
         AddTilesToGraph(graph, lines);
         //
@@ -26,7 +26,7 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
     
     //Build graph tieNodes from input custom data
     @Override 
-    public void AddTilesToGraph(AStar graph, List<String> lines)
+    public void AddTilesToGraph(AStarGraph graph, List<String> lines)
     {
         int x=0;
         int y=0;
@@ -52,7 +52,7 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
 
     //Setup custom terrain data to default TileNodes field
     @Override
-    public void AddTokenToTile(AStar graph, MapPoint aPoint, char aToken)
+    public void AddTokenToTile(AStarGraph graph, MapPoint aPoint, char aToken)
     {
         TileNode aTileNode = graph.GetTileFromGridMap(aPoint);
        
@@ -100,7 +100,7 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
 
     //Setup graph map properties that will not change during algorithm
     @Override
-    public void initGraphProperties(AStar graph)
+    public void initGraphProperties(AStarGraph graph)
     {
         //Loop all tiles in graph and setup initialize property fields 
         for (Map.Entry<MapPoint, TileNode> entry : graph.GetGraphMap().entrySet()) 

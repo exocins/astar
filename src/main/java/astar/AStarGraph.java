@@ -12,7 +12,7 @@ import astar.MapPoint;
  * 
  */
 
-public class AStar {
+public class AStarGraph {
     
     // HashMap for graph
     private HashMap<MapPoint, TileNode> gridMap;
@@ -28,7 +28,7 @@ public class AStar {
     //
     private PathFinder pathFind;
     
-    public AStar()
+    public AStarGraph()
     {
         this.mapWidth = 0;
         this.mapHeight = 0;

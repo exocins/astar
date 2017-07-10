@@ -46,7 +46,7 @@ abstract class GraphMapFactory {
     public abstract void AddTilesToGraph(AStarGraph graph);
     
     //Setup custom terrain data to default TileNodes field
-    public abstract void AddTokenToTile(AStarGraph graph, MapPoint aPoint, char aToken);
+    public abstract void AddTokenDataToTile(AStarGraph graph, MapPoint aPoint, char aToken);
 
     //Setup graph map properties that will not change during algorithm
     public abstract void initGraphProperties(AStarGraph graph);

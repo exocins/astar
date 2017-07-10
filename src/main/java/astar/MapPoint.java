@@ -25,7 +25,7 @@ public class MapPoint
     @Override 
     public int hashCode() 
     {
-        return x * 1000 + y;
+        return y * 1000 + x;
     }
     // converts x,y to string
     @Override

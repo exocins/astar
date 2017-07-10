@@ -30,7 +30,7 @@ public class TileNode implements ITileNode {
     //
     private TileNode parentNode;    // Node from which a move was made
     
-    //Constrctor
+    //Constructor
     public TileNode(MapPoint aPoint)
     {
         this.point = aPoint;
@@ -40,7 +40,14 @@ public class TileNode implements ITileNode {
         this.parentNode = null;
         this.token = new TileToken();   //Create instance object
     }
-    
+
+    //
+    public void Reset()
+    {
+        this.gCost = 0;
+        this.hCost = 0;
+        this.parentNode = null; //will not delete parent object , but reference, since still in graph
+    }
     //
     public void setTokenDefaultProperties(char aChar, boolean walkable, int moveCost)
     {
@@ -48,10 +55,11 @@ public class TileNode implements ITileNode {
     }
     
     //
-    public void calculateHCost(TileNode destNode)
+    public double calculateHCost(TileNode destNode)
     {   // Use Manhattan formula
         this.hCost = (Math.abs(this.point.x - destNode.point.x) 
-                             + Math.abs(this.point.y - destNode.point.y)) ;
+                             + Math.abs(this.point.y - destNode.point.y));
+        return this.hCost;
     }
  
     //

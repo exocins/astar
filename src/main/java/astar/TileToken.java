@@ -7,12 +7,15 @@ package astar;
 public class TileToken {
 
     // graph node movability properties
-    public boolean walkable = false;
+    public boolean walkable;
     public char tokenChar;
-    public int moveCost= 0; 
+    public int moveCost; 
     //Constructor
     TileToken()
     {
+        walkable = false;
+        tokenChar = ' ';
+        moveCost= 0;
     }
     
     public void setDefaultProperties(char aChar, boolean walkable, int moveCost)

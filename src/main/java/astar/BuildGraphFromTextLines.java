@@ -108,7 +108,7 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
     
     }
     
-    // Adds TileNodes and initialses properties 
+    // Adds TileNodes and initialises properties 
     @Override
     public void BuildGraphMap(AStarGraph graph, MapPoint maxMapValues)
     {
@@ -151,7 +151,7 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
                     //create a MapPoint and add Tile to MapPoint to graph
                     MapPoint aPoint = new MapPoint(x,y);
                     graph.AddTileToGridMap(aPoint);
-                    AddTokenToTile(graph, aPoint, myByte);    
+                    AddTokenDataToTile(graph, aPoint, myByte);    
                     //next char in line
                     x++;
                 }
@@ -168,7 +168,7 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
 
     //Setup custom terrain data to default TileNodes field
     @Override
-    public void AddTokenToTile(AStarGraph graph, MapPoint aPoint, char aToken)
+    public void AddTokenDataToTile(AStarGraph graph, MapPoint aPoint, char aToken)
     {
         TileNode aTileNode = graph.GetTileFromGridMap(aPoint);
        

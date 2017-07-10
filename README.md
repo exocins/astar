@@ -10,12 +10,21 @@ Includes:
 
 
 Design Method:
-Object-oriented classes for graphs, tileNodes, tileTokens( default tile properties) and algorithm.
+Object-oriented classes for graphs, tileNodes, tileTokens( default tile properties) and algorithm. 
 Factory pattern to build class objects for graph and to load data from various inputs:, eg text lines. 
-Singleton pattern for graph.
-Interface classes to encapsulate data.
-Iterator patterns using array list and priority queues. Hashing of queue lists, using comparators,
-  to improve performance lookup.
+Singleton pattern for graph. 
+Interface classes to encapsulate data. 
+Iterator patterns using maps, list and priority queues. 
+Hashing of queue lists, using comparators, to improve performance lookup. 
 
+Pre-Build :
+1. Use Eclipse IDE 
+2. Install libraries: 
+   a. common.io (include in folder thirdparty) 
+   b. commons.cli (include in folder thirdparty) 
+   c. junit4
 
- 
+Build:
+1. Load project from astar root directory.
+2. AStarMain.java contains main() function.
+3. Run 

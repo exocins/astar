@@ -26,9 +26,9 @@ public class AStarGraph {
     private TileNode startTileNode;
     private TileNode destTileNode;
     
-    //
+    // Class object to perform path algorithm
     private PathFinder pathFind;
-    
+    //Constructor
     public AStarGraph()
     {
         this.mapWidth = 0;
@@ -51,17 +51,18 @@ public class AStarGraph {
     {
         this.mapHeight = gHeight;
     }
-    
+    //Set starting tile
     public void SetStartingTile(TileNode aTileNode)
     {
         this.startTileNode = aTileNode;
     }
+    //Set destination tile
     public void SetDestinationTile(TileNode aTileNode)
     {
         this.destTileNode = aTileNode;
     }
     
-    //Get methods for class
+    //Get helper methods for class
     public int GetGraphMapWidth()
     {
         return this.mapWidth;
@@ -78,18 +79,20 @@ public class AStarGraph {
     {
         return this.destTileNode;
     }
+
     //Get graph object
     public Map<MapPoint, TileNode> GetGraphMap()
     {
         return this.gridMap;
     }
+
     //Get object to calculate shortest path using A*
     public PathFinder GetPathFinder()
     {
         return this.pathFind;
     }
    
-    //Ass a Tile node to graph
+    //Assign a Tile node to graph
     public TileNode AddTileToGridMap(MapPoint aPoint )
     {
         MapPoint bPoint = new MapPoint(aPoint.x, aPoint.y);
@@ -99,6 +102,7 @@ public class AStarGraph {
         //return added TileNode
         return bTileNode;
     }
+
     //Get a specific Tile from graph
     public TileNode GetTileFromGridMap(MapPoint aPoint)
     {
@@ -107,5 +111,4 @@ public class AStarGraph {
         return aTileNode;
     }
 
-    
 }

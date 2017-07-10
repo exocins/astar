@@ -8,7 +8,7 @@ import astar.ClosedSet;
 
 /**
  * Purpose: Implements A* algorithm.
- * Prerequsite: Requires created graph "AStarGraph" with tilesNodes setup and initialized 
+ * Required input condition: Requires created graph "AStarGraph" with tilesNodes setup and initialized 
  */
 public class PathFinder {
     public boolean debugToConsole = false;

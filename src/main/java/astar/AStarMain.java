@@ -2,7 +2,6 @@ package astar;
 
 import java.io.*;
 import org.apache.commons.cli.*;
-
 import java.util.ArrayList;
 
 import astar.TileNode;
@@ -14,8 +13,6 @@ import astar.MapPoint;
  */
 public class AStarMain {
     //variables
-    //public static int xMax = 0;
-    //public static int yMax = 0;
     public static MapPoint maxMapValues;
 
     public static AStarGraph graph;
@@ -103,9 +100,8 @@ public class AStarMain {
             System.out.println("No filename passed in command parameters. Using Default.");
             return;
         }
-        // Get 
+        // Get filename from cmd args  
         inputFilename = cmd.getOptionValue("input");
 
-    }
-    
+    }    
 }

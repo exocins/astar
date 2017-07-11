@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry excluding="main/|main/java/|test/java/|test/|test/java/" kind="src" path="src"/>
-	<classpathentry excluding="java/" kind="src" path="src/main"/>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry excluding="java/" kind="src" path="src/test"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/commons-io-2.5/commons-io-2.5.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/commons-io-2.5/commons-io-2.5-javadoc.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/commons-cli-1.4/commons-cli-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/commons-cli-1.4/commons-cli-1.4-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/commons-cli-1.4/commons-cli-1.4-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/commons-cli-1.4/commons-cli-1.4-tests.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/commons-cli-1.4/commons-cli-1.4-test-sources.jar"/>
+	<classpathentry kind="lib" path="src/lib/commons-cli-1.4.jar"/>
+	<classpathentry kind="lib" path="src/lib/commons-cli-1.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="src/lib/commons-cli-1.4-sources.jar"/>
+	<classpathentry kind="lib" path="src/lib/commons-cli-1.4-tests.jar"/>
+	<classpathentry kind="lib" path="src/lib/commons-cli-1.4-test-sources.jar"/>
+	<classpathentry kind="lib" path="src/lib/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="src/lib/commons-io-2.5-javadoc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

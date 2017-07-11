@@ -13,8 +13,6 @@ import astar.ClosedSet;
 public class PathFinder {
     public boolean debugToConsole = false;
     //fields for graph 
-    private int width;
-    private int height;
     AStarGraph graph;
     // List of neighbours of current TileNode
     public ArrayList<TileNode> currentNodeNeighbours;
@@ -40,13 +38,6 @@ public class PathFinder {
         }
     }
 
-    //
-    public void SetMapSize(int width, int height) 
-    {
-        this.width = width;
-        this.height = height;
-    }
-
     // Determines the shortest path in the graph
     public ArrayList<TileNode> StartPathFind(TileNode startNode, TileNode destinationNode)
     {
@@ -70,8 +61,8 @@ public class PathFinder {
                         + ( "Closed set: " + closedList.toString() ) +"\n");
             }
             //get element with the least sum of costs from the initial node 
-            //and heuristic costs to the goal 
-            currentNode = openList.poll();
+            //and heuristic costs to the destinationNode 
+            currentNode = openList.poll();  //get node from list
 
             //Check if reached destination node
             if (currentNode.getMapPoint().equals(destinationNode.point)) 
@@ -90,8 +81,8 @@ public class PathFinder {
                 {    
                     continue;
                 }
-                /* Special rule for nodes that are generated within other nodes:
-                 * Ensure that the node and its g value are from the openSet if its already discovered
+                /* Note for nodes that are generated within other nodes:
+                 * Ensure that the node and its g value are from the openSet if its already discovered.
                  */
                 ITileNode discNeighbourNode = openList.getNode(neighbourNode);
                 if(discNeighbourNode != null) 
@@ -194,9 +185,9 @@ public class PathFinder {
     private boolean isPointInsideGraphBounds(int x, int y) 
     {
         return x >= 0 &&
-               x < this.width && 
+               x < this.graph.GetGraphMapWidth() && 
                y >= 0 && 
-               y < this.height;
+               y < this.graph.GetGraphMapHeight();
     }
 
 }

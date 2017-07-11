@@ -14,11 +14,11 @@ import astar.MapPoint;
 public class AStarMain {
     //variables
     public static MapPoint maxMapValues;
-
+    // Contains all data of map and paths to find short path
     public static AStarGraph graph;
-    //
+    //List for output path found
     public static ArrayList<TileNode> pathFound;
-    //
+    // Filenames of input and output data
     public static String inputFilename =  "src/small_map.txt";
     public static String outputFilename = "src/out_path.txt";
   
@@ -32,7 +32,7 @@ public class AStarMain {
     GetFileName(args);
     System.out.println("Using input filename: " + inputFilename);
 
-    //Check input File exists or clashes with out filename
+    //Check input File exists, not a directory or clashes with out filename
     File fIn = new File(inputFilename);
     try {
         if( !(fIn.exists() && !fIn.isDirectory()) )
@@ -48,7 +48,7 @@ public class AStarMain {
     }
     finally
     {
-        fIn = null;
+        fIn = null;  // file class remove
     }
 
     //Get factory object to graph for require input load data type
@@ -64,11 +64,10 @@ public class AStarMain {
     factory.BuildGraphMap(graph, maxMapValues);            
 
     //Determine path of using algorithm
-    graph.GetPathFinder().SetMapSize(maxMapValues.x, maxMapValues.y);
     pathFound = graph.GetPathFinder().StartPathFind(graph.GetStartingTile(), graph.GetDestinationTile());
-    //
-    System.out.printf("\nGraph size and shortest path: xMax= %d, yMax= %d \n", maxMapValues.x, maxMapValues.y );
 
+    //Print max values and path found to console
+    System.out.printf("\nGraph size and shortest path: xMax= %d, yMax= %d \n", maxMapValues.x, maxMapValues.y );
     //Loop all tiles in graph and setup initialize property fields 
     for (TileNode aTileNode : pathFound) 
     {

@@ -21,7 +21,8 @@ public class AStarGraphTest {
     AStarGraph graph;
     BuildGraphFromTextLines factory;
     PathFinder pathFind;
-    
+    ArrayList<TileNode> pathFound;
+   
     @Before
     public void setUp() throws Exception {
         inputLines = new ArrayList<String>();
@@ -38,6 +39,7 @@ public class AStarGraphTest {
         factory.createGraphMap();
         factory.BuildGraphMap(graph, maxMapValues);
         pathFind = graph.GetPathFinder();
+        pathFound = graph.GetPathFinder().StartPathFind(graph.GetStartingTile(), graph.GetDestinationTile());
     }
 
     @After
@@ -48,6 +50,8 @@ public class AStarGraphTest {
         graph = null;
         factory = null;
         pathFind = null;
+        pathFound.clear();
+        pathFound = null;
     }
 
     @Test
@@ -64,6 +68,10 @@ public class AStarGraphTest {
         assertEquals( '@', aTileNode.getTileToken().tokenChar);
         aTileNode = graph.GetDestinationTile();
         assertEquals( 'X', aTileNode.getTileToken().tokenChar);
+
+        assertEquals(6, pathFound.size(), 0);
+        assertEquals("MapPoint index 3","(3,2)", pathFound.get(3).toString());
+
     }
 
 

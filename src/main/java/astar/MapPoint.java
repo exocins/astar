@@ -7,6 +7,9 @@ package astar;
 
 public class MapPoint 
 {
+    // Constants
+    private final int INITIAL_HASH_OFFSET = 1000;
+    //Internal fields
     int x;
     int y;
     //Constructors
@@ -25,7 +28,7 @@ public class MapPoint
     @Override 
     public int hashCode() 
     {
-        return y * 1000 + x;
+        return y * INITIAL_HASH_OFFSET + x;
     }
     // converts x,y to string
     @Override

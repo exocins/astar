@@ -68,7 +68,7 @@ public class AStarGraphTest {
         assertEquals( '@', aTileNode.getTileToken().tokenChar);
         aTileNode = graph.GetDestinationTile();
         assertEquals( 'X', aTileNode.getTileToken().tokenChar);
-
+        //Test size of returned path = 6
         assertEquals(6, pathFound.size(), 0);
         assertEquals("MapPoint index 3","(3,2)", pathFound.get(3).toString());
 

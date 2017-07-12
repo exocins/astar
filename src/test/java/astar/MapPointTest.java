@@ -11,7 +11,7 @@ public class MapPointTest {
 
     @Before
     public void setUp() throws Exception {
-        aMapPoint = new MapPoint(2,3);
+        aMapPoint = new MapPoint(2,3); // create a known point
     }
 
     @After
@@ -23,6 +23,7 @@ public class MapPointTest {
     public void test() {
         assertEquals(2, aMapPoint.x, 0);
         assertEquals(3, aMapPoint.y, 0);
+        // test a known point to String
         assertEquals("MapPoint.toString","(2,3)", aMapPoint.toString());
     }
 

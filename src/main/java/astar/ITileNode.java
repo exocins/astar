@@ -6,7 +6,7 @@ package astar;
  * 
  */
 public interface ITileNode {
-    //Get mapoint for node
+    //Get mapPoint for node
     public MapPoint getMapPoint();
     // Set Heuristic value (h) - distance cost to destination node
     public void setHCost(double h);
@@ -14,7 +14,7 @@ public interface ITileNode {
     public double getHCost();
     // Set g value - cost of movement from start node
     public void setGCost(double g);
-    //Get g tentitive value
+    //Get g tentative value
     public double getGCost();
     //move cost to toNode
     public double calculateGMoveCost(ITileNode toNode);

@@ -130,11 +130,11 @@ public class PathFinder {
     {
         this.currentNodeNeighbours.clear();
         //Check 8 neighbour nodes of center currentTileNode
-        for (int x=-1;x<2;x++) 
+        for (int x=-1;x<2;x++) // -1 left of node, 2-1 right of node
         {
-            for (int y=-1;y<2;y++) 
+            for (int y=-1;y<2;y++)  // -1 botton of node, 2-1 top of node
             {
-                if ((x == 0) && (y == 0)) 
+                if ((x == 0) && (y == 0)) //equal to node
                 {
                     continue;
                 }

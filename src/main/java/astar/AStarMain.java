@@ -25,7 +25,7 @@ public class AStarMain {
     //Start function of program
     public static void main(String[] args) throws IOException {
     
-        //Initialise fields    
+        //Initialize fields    
         maxMapValues = new MapPoint(0,0);
            
         //Check if filename part of command line argument

@@ -10,13 +10,16 @@ import astar.ITileNode;
  * 
  */
 public class OpenSet implements IOpenSet {
+    // Constants
+    private final int INITIAL_QUEUE_SIZE = 1000;
+
     // internal Set
     private PriorityQueue<ITileNode> Q;
 
     // Constructor
     public OpenSet(Comparator<ITileNode> comp) 
     {   // create Set instance , using  Function comp to set sort order in Set
-        Q = new PriorityQueue<ITileNode>(1000, comp);
+        Q = new PriorityQueue<ITileNode>(INITIAL_QUEUE_SIZE, comp);
     }
 
     public void add(ITileNode node) 

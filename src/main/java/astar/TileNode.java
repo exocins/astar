@@ -1,22 +1,14 @@
 package astar;
 
-//import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.Map;
-//import java.util.*;
-
 import astar.ITileNode;
+
 import astar.MapPoint;
-import astar.TileToken;
 
 /**
  * Purpose: Class to represent path data on a grid
  *  
  */
 public class TileNode implements ITileNode {
-    // Constants
-    //private final int H_V_MOVEMENT_COST = 10;
-    //private final int DIAG_MOVEMENT_COST = 14;
     
     // (x,y) graph position of TileNode
     public MapPoint point;
@@ -24,7 +16,7 @@ public class TileNode implements ITileNode {
     // Tile token representing terrain object default walkable properties
     public TileToken token;
     
-    //Variables internal- used for movement algotithms
+    //Variables internal- used for movement algorithms
     private double hCost;           // Move cost from node to destination node
     private double gCost;           // Move cost from start node to this node
     //

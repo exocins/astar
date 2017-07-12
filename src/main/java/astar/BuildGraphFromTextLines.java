@@ -39,7 +39,7 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
         try {
             inputLines = FileUtils.readLines(fIn, "UTF-8");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            // Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -67,13 +67,13 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
                     @Override       
                     public int compare(MapPoint a, MapPoint b) {
                         if ( (a.x + (a.y* graph.GetGraphMapWidth() )) < (b.x + (b.y*graph.GetGraphMapWidth() )) ) {
-                            return -1;
+                            return -1; // a < b
                         } else 
                         if ( (a.x + (a.y*graph.GetGraphMapWidth() )) > (b.x + (b.y*graph.GetGraphMapWidth() ))) {
-                            return 1;
+                            return 1;  // a > b
                         } else 
                         {
-                            return 0; // same x and same y
+                            return 0; // a = b //same x and same y
                         }
                     }                                
                     } );
@@ -108,7 +108,7 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
     
     }
     
-    // Adds TileNodes and initialises properties 
+    // Adds TileNodes and initializes properties 
     @Override
     public void BuildGraphMap(AStarGraph graph, MapPoint maxMapValues)
     {
@@ -135,7 +135,7 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
                 x=0;    
                 if( y >= graph.GetGraphMapHeight() )
                 {
-                    /*create custom exeception*/
+                    /*create custom exception*/
                     throw new Exception("Cannot add tile to graph: point y >= yMax");
                 }
     
@@ -144,7 +144,7 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
                 {
                     if( x >= graph.GetGraphMapWidth() )
                     {
-                        /*create custom exeception*/
+                        /*create custom exception*/
                         throw new Exception("Cannot add tile to graph: point x >= xMax");
                     }
                     
@@ -223,7 +223,6 @@ public class BuildGraphFromTextLines extends GraphMapFactory {
         {
             //MapPoint aPoint = entry.getKey();
             TileNode aTileNode = entry.getValue();
-           //System.out.printf("%d,%d,%c ", aTileNode.getMapPoint().x, aTileNode.getMapPoint().y, aTileNode.getTileToken().tokenChar );
             
             //Setup default properties for aTileNode
             initTileProperties(aTileNode);
